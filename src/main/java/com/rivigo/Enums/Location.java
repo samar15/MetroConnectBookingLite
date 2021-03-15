@@ -1,6 +1,6 @@
 package com.rivigo.Enums;
 
-public enum locations {
+public enum Location {
     DELHI,
     MUMBAI,
     KOLKATA,

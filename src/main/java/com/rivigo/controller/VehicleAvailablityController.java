@@ -1,14 +1,15 @@
 package com.rivigo.controller;
 
+import com.rivigo.Enums.Location;
 import com.rivigo.dto.RequestDto;
 import com.rivigo.model.mysql.Vehicle;
+import com.rivigo.service.LocationService;
 import com.rivigo.service.RequestService;
 import com.rivigo.service.VehicleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.ws.Response;
 import java.util.List;
 
 @RestController
@@ -22,6 +23,9 @@ public class VehicleAvailablityController {
     @Autowired
     RequestService requestService;
 
+    @Autowired
+    LocationService locationService;
+    
     @RequestMapping(value = "/available_vehicles", method = RequestMethod.GET)
     public List<Vehicle> fetchAvailableVehicleList(){
         return vehicleService.fetchAvailableVehicleList();
@@ -37,6 +41,17 @@ public class VehicleAvailablityController {
             return null;
         }
 
+    }
+
+    @RequestMapping(value = "/cost", method = RequestMethod.GET)
+    public Double findCost(@RequestParam String origin,
+                           @RequestParam String destination){
+        try{
+            return locationService.findDistance(Location.valueOf(origin),Location.valueOf(destination));
+        }catch (Exception e){
+            log.info("error {}" ,e.toString());
+            return null;
+        }
     }
 
 }

@@ -5,6 +5,7 @@ import com.rivigo.model.mysql.Request;
 import com.rivigo.repository.RequestRepository;
 import com.rivigo.service.RequestService;
 import lombok.extern.slf4j.Slf4j;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,10 +25,11 @@ public class RequestServiceImpl implements RequestService {
     Request request=  Request.builder()
                 .sourceId(requestDto.getSource())
                 .destinationId(requestDto.getDestination())
-                .dateOfPacakage(requestDto.getDateOfPickUp())
+                .dateOfPacakage(DateTime.now())
                 .weight(requestDto.getWeight())
                 .userId(requestDto.getUser_id()).build();
         try {
+            log.info("request: {}",request.toString());
            Request request1 = requestRepository.save(request);
            return request1.getId();
         }catch (Exception exception){

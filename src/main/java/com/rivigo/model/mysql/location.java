@@ -1,6 +1,6 @@
 package com.rivigo.model.mysql;
 
-import com.rivigo.Enums.locations;
+import com.rivigo.Enums.Location;
 import lombok.*;
 
 import javax.persistence.Column;
@@ -22,7 +22,7 @@ public class location  {
     private Long id;
 
     @Column(name = "code")
-    private locations code;
+    private Location code;
 
     @Column(name = "latitude")
     private Double latitude;

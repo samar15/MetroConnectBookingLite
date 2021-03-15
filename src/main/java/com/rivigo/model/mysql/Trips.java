@@ -1,7 +1,7 @@
 package com.rivigo.model.mysql;
 
 import com.rivigo.Enums.Status;
-import com.rivigo.Enums.locations;
+import com.rivigo.Enums.Location;
 import lombok.*;
 
 import javax.persistence.Column;
@@ -22,10 +22,10 @@ public class Trips {
     private Long id;
 
     @Column(name = "from_location")
-    private locations fromLocation;
+    private Location fromLocation;
 
     @Column(name = "to_location")
-    private locations toLocation;
+    private Location toLocation;
 
     @Column(name = "vehicle_number")
     private String vehicleNumber;

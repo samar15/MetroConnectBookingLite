@@ -1,7 +1,7 @@
 package com.rivigo.model.mysql;
 
 
-import com.rivigo.Enums.locations;
+import com.rivigo.Enums.Location;
 import lombok.*;
 import org.joda.time.DateTime;
 
@@ -21,10 +21,10 @@ public class Request {
     private Long id;
 
     @Column(name = "source_code")
-    private locations sourceId;
+    private Location sourceId;
 
     @Column(name = "destination_code")
-    private locations destinationId;
+    private Location destinationId;
 
     @Column(name = "date_of_package")
     private DateTime dateOfPacakage;
