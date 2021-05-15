@@ -44,12 +44,24 @@ public class VehicleAvailablityController {
     }
 
     @RequestMapping(value = "/distance", method = RequestMethod.GET)
-    public Double findCost(@RequestParam String origin,
+    public Double findDistance(@RequestParam String origin,
                            @RequestParam String destination){
         try{
             return locationService.findDistance(origin,destination);
         }catch (Exception e){
-            log.info("error {}" ,e.toString());
+            log.error("error {}" ,e.toString());
+            return null;
+        }
+    }
+
+    @RequestMapping(value = "/cost", method = RequestMethod.GET)
+    public Double getCost(@RequestParam String origin,
+                          @RequestParam String destination){
+        try{
+            Double distance=locationService.findDistance(origin,destination);
+            return distance*6;
+        }catch ( Exception e){
+            log.error("error {}", e.toString());
             return null;
         }
     }
