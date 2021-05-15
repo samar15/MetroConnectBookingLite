@@ -43,7 +43,7 @@ public class VehicleAvailablityController {
 
     }
 
-    @RequestMapping(value = "/cost", method = RequestMethod.GET)
+    @RequestMapping(value = "/distance", method = RequestMethod.GET)
     public Double findCost(@RequestParam String origin,
                            @RequestParam String destination){
         try{
