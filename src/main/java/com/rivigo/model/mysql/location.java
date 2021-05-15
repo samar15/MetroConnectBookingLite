@@ -22,7 +22,7 @@ public class location  {
     private Long id;
 
     @Column(name = "code")
-    private Location code;
+    private String code;
 
     @Column(name = "latitude")
     private Double latitude;

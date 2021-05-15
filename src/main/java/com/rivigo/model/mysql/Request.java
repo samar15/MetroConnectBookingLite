@@ -21,10 +21,10 @@ public class Request {
     private Long id;
 
     @Column(name = "source_code")
-    private Location sourceId;
+    private String sourceId;
 
     @Column(name = "destination_code")
-    private Location destinationId;
+    private String destinationId;
 
     @Column(name = "date_of_package")
     private DateTime dateOfPacakage;

@@ -7,6 +7,7 @@ import com.rivigo.Enums.Location;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import org.joda.time.DateTime;
 
 import java.sql.Timestamp;
 
@@ -15,16 +16,16 @@ import java.sql.Timestamp;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RequestDto {
     @NotNull
-    Location source;
+    String source;
 
     @NotNull
-    Location destination;
+    String destination;
 
     @NotNull
     float weight;
 
-    @NotNull
-    Timestamp dateOfPickUp;
+
+    String dateOfPickUp;
 
     @NotNull
     Long user_id;

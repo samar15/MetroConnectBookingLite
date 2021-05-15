@@ -4,8 +4,8 @@ import com.rivigo.Enums.Location;
 
 
 public interface LocationService {
-    double findDistance(Location origin , Location distance);
+    Double findDistance(String origin , String distance);
 
-    double distance(double origin_lat, double origin_long ,
-                    double destination_lat, double destination_long);
+    Double distance(Double origin_lat, Double origin_long ,
+                    Double destination_lat, Double destination_long);
 }

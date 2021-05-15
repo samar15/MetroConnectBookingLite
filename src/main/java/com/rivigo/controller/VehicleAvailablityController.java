@@ -47,7 +47,7 @@ public class VehicleAvailablityController {
     public Double findCost(@RequestParam String origin,
                            @RequestParam String destination){
         try{
-            return locationService.findDistance(Location.valueOf(origin),Location.valueOf(destination));
+            return locationService.findDistance(origin,destination);
         }catch (Exception e){
             log.info("error {}" ,e.toString());
             return null;
