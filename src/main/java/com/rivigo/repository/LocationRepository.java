@@ -9,6 +9,6 @@ import java.util.List;
 
 
 @Repository
-public interface LocationRepository extends JpaRepository<location,Long> {
+public interface LocationRepository extends JpaRepository<location,Integer> {
     List<location> getAllByCodeIn(List<String> location );
 }
