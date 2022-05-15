@@ -33,4 +33,7 @@ public class Vehicle {
 
     @Column(name = "is_available")
     private boolean isAvailable;
+
+    @Column(name="current_location")
+    private String currentLocation;
 }

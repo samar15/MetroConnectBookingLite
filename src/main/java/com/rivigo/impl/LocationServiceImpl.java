@@ -2,6 +2,7 @@ package com.rivigo.impl;
 
 import com.rivigo.model.mysql.Location;
 import com.rivigo.repository.LocationRepository;
+import com.sun.istack.internal.NotNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+import static com.rivigo.constants.constants.RATE_PER_KM;
 
 @Service
 @Slf4j
@@ -21,8 +23,8 @@ class LocationServiceImpl implements com.rivigo.service.LocationService{
     /*
  distance calculation using haversine formula
  */
-    @Override
-    public Double distance(Double origin_lat,Double origin_long , Double destination_lat, Double destination_long) throws Exception{
+
+    private Double distance(Double origin_lat,Double origin_long , Double destination_lat, Double destination_long) throws Exception{
         if(Objects.isNull(origin_lat) || Objects.isNull(origin_long) ||Objects.isNull(destination_lat) || Objects.isNull(destination_long)){
             log.error("origin_lat: {} , origin_long: {} , destination_lat: {} , destination_long : {} is null ", origin_lat, origin_long, destination_lat, destination_long);
             throw new Exception("lat/long of origin/destination is null");
@@ -41,7 +43,7 @@ class LocationServiceImpl implements com.rivigo.service.LocationService{
     }
 
     @Override
-    public Double findDistance(String origin, String destination) throws Exception {
+    public Double getDistance(String origin, String destination) throws Exception {
         if (Objects.isNull(origin) || Objects.isNull(destination)) {
             throw new Exception("Origin or destination can't be null");
         }
@@ -51,6 +53,10 @@ class LocationServiceImpl implements com.rivigo.service.LocationService{
         return this.distance(
                 originLocation.getLatitude(),originLocation.getLongitude(),
                 destinationLocation.getLatitude(),destinationLocation.getLongitude());
+    }
+
+    public Double getCost(@NotNull Double distance){
+        return distance * RATE_PER_KM;
     }
 
 }

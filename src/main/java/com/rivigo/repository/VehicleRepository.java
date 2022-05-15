@@ -10,5 +10,7 @@ import java.util.List;
 
 @Repository
 public interface VehicleRepository extends JpaRepository<Vehicle,Integer> {
-    List<Vehicle>findAllByIsAvailable(Boolean isAvailable);
+    List<Vehicle> findAllByIsAvailable(Boolean isAvailable);
+
+    List<Vehicle>findAllByIsAvailableAndCurrentLocation(Boolean aTrue, String location);
 }

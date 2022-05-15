@@ -6,24 +6,25 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import org.joda.time.DateTime;
 
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RequestDto {
     @NotNull
-    String source;
+    private String source;
 
     @NotNull
-    String destination;
+    private String destination;
 
     @NotNull
-    float weight;
+    private float weight;
 
     @NotNull
-    Long dateOfPickUp;
+    private DateTime dateOfPickUp;
 
     @NotNull
-    Integer user_id;
+    private Integer user_id;
 
 }

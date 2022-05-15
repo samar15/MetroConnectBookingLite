@@ -19,4 +19,9 @@ public class VehicleServiceImpl implements com.rivigo.service.VehicleService {
    public List<Vehicle> fetchAvailableVehicleList(){
         return vehicleRepository.findAllByIsAvailable(Boolean.TRUE);
     }
+
+    @Override
+    public List<Vehicle> findAvailableVehicleByLocation(String location){
+        return vehicleRepository.findAllByIsAvailableAndCurrentLocation(Boolean.TRUE,location);
+    }
 }

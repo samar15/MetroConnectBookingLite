@@ -1,13 +1,16 @@
 package com.rivigo.controller;
 
 import com.rivigo.dto.RequestDto;
+import com.rivigo.dto.RequestInfoDto;
+import com.rivigo.model.mysql.Vehicle;
 import com.rivigo.service.LocationService;
 import com.rivigo.service.RequestService;
+import com.rivigo.service.VehicleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import static com.rivigo.constants.constants.RATE_PER_KM;
+
 
 @Slf4j
 @RestController
@@ -21,10 +24,10 @@ public class RequestController {
     LocationService locationService;
 
 
-    @PostMapping(value= "/saveRequest")
-    public Integer saveRequest(@RequestBody RequestDto request){
+    @PostMapping(value= "/make_request")
+    public RequestInfoDto saveRequest(@RequestBody RequestDto request){
         try {
-            return requestService.create(request);
+            return requestService.makeRequest(request);
         }catch (Exception e){
             log.info("exception {}", e.toString());
             return null;
@@ -36,7 +39,7 @@ public class RequestController {
     public Double findDistance(@RequestParam String origin,
                                @RequestParam String destination){
         try{
-            return locationService.findDistance(origin,destination);
+            return locationService.getDistance(origin,destination);
         }catch (Exception e){
             log.error("error {}" ,e.toString());
             return null;
@@ -47,8 +50,8 @@ public class RequestController {
     public Double getCost(@RequestParam String origin,
                           @RequestParam String destination){
         try{
-            Double distance=locationService.findDistance(origin,destination);
-            return distance * RATE_PER_KM;
+            Double distance=locationService.getDistance(origin,destination);
+            return locationService.getCost(distance);
         }catch ( Exception e){
             log.error("error {}", e.toString());
             return null;

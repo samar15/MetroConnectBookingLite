@@ -1,5 +1,6 @@
 package com.rivigo.model.mysql;
 
+import com.rivigo.Enums.RequestStatus;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.AllArgsConstructor;
@@ -40,6 +41,9 @@ public class Request {
     private Integer userId;
 
     @Column(name = "weight")
-    private float weight;
+    private Float weight;
+
+    @Column(name = "request_status")
+    private RequestStatus requestStatus;
 
 }
