@@ -1,6 +1,5 @@
 package com.rivigo.model.mysql;
 
-import com.rivigo.Enums.Location;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.AllArgsConstructor;
@@ -23,7 +22,7 @@ import javax.persistence.GenerationType;
 @Builder
 @Entity
 @Table(name = "location")
-public class location  {
+public class Location  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

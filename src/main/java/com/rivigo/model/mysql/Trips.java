@@ -1,12 +1,20 @@
 package com.rivigo.model.mysql;
 
 import com.rivigo.Enums.Status;
-import com.rivigo.Enums.Location;
-import lombok.*;
 
-import javax.persistence.Column;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.Builder;
+import lombok.ToString;
+
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Column;
+import javax.persistence.GenerationType;
 import java.util.Date;
 
 @Getter
@@ -16,16 +24,18 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 @Builder
+@Table(name = "trips")
 public class Trips {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "from_location")
-    private Location fromLocation;
+    private String fromLocation;
 
     @Column(name = "to_location")
-    private Location toLocation;
+    private String toLocation;
 
     @Column(name = "vehicle_number")
     private String vehicleNumber;
