@@ -22,10 +22,10 @@ class LocationServiceImpl implements com.rivigo.service.LocationService{
  distance calculation using haversine formula
  */
     @Override
-    public Double distance(Double origin_lat,Double origin_long , Double destination_lat, Double destination_long){
-        if(null == origin_lat || null == origin_long || null == destination_lat || null == destination_long   ){
+    public Double distance(Double origin_lat,Double origin_long , Double destination_lat, Double destination_long) throws Exception{
+        if(Objects.isNull(origin_lat) || Objects.isNull(origin_long) ||Objects.isNull(destination_lat) || Objects.isNull(destination_long)){
             log.error("origin_lat: {} , origin_long: {} , destination_lat: {} , destination_long : {} is null ", origin_lat, origin_long, destination_lat, destination_long);
-            return null;
+            throw new Exception("lat/long of origin/destination is null");
         }
         long radius=6371L ;
         double dlat= Math.toRadians(destination_lat-origin_lat);

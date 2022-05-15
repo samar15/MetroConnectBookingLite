@@ -12,7 +12,7 @@ import static com.rivigo.constants.constants.RATE_PER_KM;
 @Slf4j
 @RestController
 @RequestMapping("/request")
-public class requestController {
+public class RequestController {
 
     @Autowired
     RequestService requestService;
