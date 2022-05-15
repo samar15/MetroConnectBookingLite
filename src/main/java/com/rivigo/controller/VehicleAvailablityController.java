@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static com.rivigo.constants.constants.RATE_PER_KM;
+
 @RestController
 @Slf4j
 @RequestMapping(value = {"/vehicle"})
