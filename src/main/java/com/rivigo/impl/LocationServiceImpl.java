@@ -1,7 +1,6 @@
 package com.rivigo.impl;
 
-import com.rivigo.Enums.Location;
-import com.rivigo.model.mysql.location;
+import com.rivigo.model.mysql.Location;
 import com.rivigo.repository.LocationRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 
 @Service
@@ -47,9 +45,9 @@ class LocationServiceImpl implements com.rivigo.service.LocationService{
         if (Objects.isNull(origin) || Objects.isNull(destination)) {
             throw new Exception("Origin or destination can't be null");
         }
-        List<location> locations = locationRepository.getAllByCodeIn(Arrays.asList(origin,destination));
-        location originLocation=locations.stream().filter(location->origin.equals(location.getCode())).findAny().orElseThrow( () -> new Exception("Service not allowed"));
-        location destinationLocation=locations.stream().filter(location -> destination.equals(location.getCode())).findAny().orElseThrow(()-> new Exception("Service not allowed"));
+        List<Location> locations = locationRepository.getAllByCodeIn(Arrays.asList(origin,destination));
+        Location originLocation=locations.stream().filter(location->origin.equals(location.getCode())).findAny().orElseThrow( () -> new Exception("Service not allowed"));
+        Location destinationLocation=locations.stream().filter(location -> destination.equals(location.getCode())).findAny().orElseThrow(()-> new Exception("Service not allowed"));
         return this.distance(
                 originLocation.getLatitude(),originLocation.getLongitude(),
                 destinationLocation.getLatitude(),destinationLocation.getLongitude());

@@ -1,7 +1,5 @@
 package com.rivigo.service;
 
-import com.rivigo.Enums.Location;
-
 
 public interface LocationService {
     Double findDistance(String origin , String distance) throws Exception;
