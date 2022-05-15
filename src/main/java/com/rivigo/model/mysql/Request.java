@@ -18,7 +18,7 @@ import javax.persistence.*;
 public class Request {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(name = "source_code")
     private String sourceId;
@@ -27,10 +27,10 @@ public class Request {
     private String destinationId;
 
     @Column(name = "date_of_package")
-    private DateTime dateOfPacakage;
+    private Long dateOfPacakage;
 
     @Column(name = "user_id")
-    private Long userId;
+    private Integer userId;
 
     @Column(name = "weight")
     private float weight;

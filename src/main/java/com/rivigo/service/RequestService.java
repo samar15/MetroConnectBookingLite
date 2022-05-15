@@ -5,7 +5,9 @@ import com.rivigo.dto.RequestDto;
 
 
 public interface RequestService {
-    Long save(RequestDto requestDto);
+    Integer create(RequestDto requestDto);
+
+
 
 
 }

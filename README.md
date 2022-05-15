@@ -33,3 +33,33 @@ Assume there are 10,000 vehicles available in every metro when the service start
 Assume any entity or parameter you consider is needed for this System. Do use a proper project Structure. 
 
 Tech Stack preferred: Java8, Springboot , hibernate, mysql , redis 
+
+
+MYSQL TABLES
+
+create table location (
+id INT ,
+code VARCHAR(10) NOT NULL ,
+latitude DOUBLE NOT NULL ,
+longitude DOUBLE NOT NULL ,
+PRIMARY KEY (id)
+);
+
+
+create table vehicle (
+id INT ,
+vehicle_number VARCHAR(10) NOT NULL ,
+is_available BOOLEAN NOT NULL ,
+PRIMARY KEY (id)
+);
+
+
+create table request (
+id INT AUTO_INCREMENT ,
+source_code VARCHAR(10) NOT NULL ,
+destination_code VARCHAR(10) NOT NULL ,
+date_of_package BIGINT(16) NOT NULL ,
+user_id INT NOT NULL ,
+weight FLOAT NOT NULL ,
+PRIMARY KEY (id)
+);

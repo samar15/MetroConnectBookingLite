@@ -22,14 +22,13 @@ public class RequestServiceImpl implements RequestService {
 
 
     @Override
-    public Long save(RequestDto requestDto){
+    public Integer create(RequestDto requestDto){
     Request request=  Request.builder()
-                .id(1L)
-                .sourceId(requestDto.getSource())
-                .destinationId(requestDto.getDestination())
-                .weight(requestDto.getWeight())
-
-                .userId(requestDto.getUser_id()).build();
+            .sourceId(requestDto.getSource())
+            .destinationId(requestDto.getDestination())
+            .weight(requestDto.getWeight())
+            .dateOfPacakage(requestDto.getDateOfPickUp())
+            .userId(requestDto.getUser_id()).build();
         try {
             log.info("request: {}",request.toString());  
            Request request1 = requestRepository.save(request);

@@ -26,16 +26,16 @@ public class VehicleAvailablityController {
     @Autowired
     LocationService locationService;
     
-    @RequestMapping(value = "/available_vehicles", method = RequestMethod.GET)
+    @GetMapping(value = "/available_vehicles")
     public List<Vehicle> fetchAvailableVehicleList(){
         return vehicleService.fetchAvailableVehicleList();
 
     }
 
-    @RequestMapping(value= "/saveRequest", method = RequestMethod.POST)
-    public Long saveRequest(@RequestBody RequestDto request){
+    @PostMapping(value= "/saveRequest")
+    public Integer saveRequest(@RequestBody RequestDto request){
         try {
-            return requestService.save(request);
+            return requestService.create(request);
         }catch (Exception e){
             log.info("exception {}", e.toString());
             return null;
@@ -43,7 +43,7 @@ public class VehicleAvailablityController {
 
     }
 
-    @RequestMapping(value = "/distance", method = RequestMethod.GET)
+    @GetMapping (value = "/distance")
     public Double findDistance(@RequestParam String origin,
                            @RequestParam String destination){
         try{
@@ -54,12 +54,12 @@ public class VehicleAvailablityController {
         }
     }
 
-    @RequestMapping(value = "/cost", method = RequestMethod.GET)
+    @GetMapping (value = "/cost")
     public Double getCost(@RequestParam String origin,
                           @RequestParam String destination){
         try{
             Double distance=locationService.findDistance(origin,destination);
-            return distance*6;
+            return distance * RATE_PER_KM;
         }catch ( Exception e){
             log.error("error {}", e.toString());
             return null;
